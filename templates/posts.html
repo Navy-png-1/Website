@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+{% for post in posts %}
+    <h1>{{post["id"]}}</h1>
+{% endfor %}
+<body>
+    <a href="{{url_for('journal')}}">Blog-Jounal</a>
+</body>
+{% endblock %}
