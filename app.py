@@ -3,12 +3,12 @@ from datetime import date
 
 app = Flask(__name__)
 posts = [{"id":"11", "date":"8/16/2025", "content":"Info", "name":"Personal Info", "title":"Don't Know"}, {"id":"11", "date":"8/16/2025", "content":"Info", "name":"Personal Info", "title":"Don't Know"}]
-@app.route("/home")
+@app.route("/test")
 def hello():
-    return render_template("file3.html")
+    return render_template("test.html")
 @app.route("/journal")
 def journal():
-    return render_template("file4.html")
+    return render_template("journal.html")
 @app.route("/journal/posts")
 def view_post():
     return render_template("posts.html", posts=posts)
@@ -24,7 +24,7 @@ def new_post():
     return render_template("new_posts.html")
 @app.route("/form_submission")
 def form_sub():
-    return render_template("File1.html")
+    return render_template("form.html")
 @app.route("/")
 def home():
     return render_template("home.html")
