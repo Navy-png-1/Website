@@ -10,6 +10,7 @@
     <p class="card-text">Content: {{post["content"]}}</p>
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
+    <img src="{{url_for('uploaded_file', filename=post.filename)}}"
   </div>
   </div>
 {% endfor %}
