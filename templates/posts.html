@@ -2,7 +2,7 @@
 {% block content %}
 {% for post in posts %}
     <title>View Posts</title>
-    <h1>Info</h1>
+      <h1>Info</h1>
     <div class="card" style="width: 18rem;">
     <div class="card-body">
     <h5 class="card-title">Title: {{post["title"]}}</h5>
@@ -10,9 +10,13 @@
     <p class="card-text">Content: {{post["content"]}}</p>
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
-    <img src="{{url_for('uploaded_file', filename=post.filename)}}"
-  </div>
-  </div>
+    <img src="{{url_for('get_file', filename=post.filename)}}">
+    {% if {{post["filename"]}} != "" %}
+      {{post["filename"]}}
+      <a href="{{url_for('get_file', filename=post.filename)}}" class="card-link">Link</a>
+    {% endif %}
+    </div>
+    </div>
 {% endfor %}
 <body>
     <a href="{{url_for('journal')}}">Blog-Jounal</a>

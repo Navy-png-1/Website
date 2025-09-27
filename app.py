@@ -22,11 +22,19 @@ def new_post():
         content = request.form.get('content')
         id = len(posts) + 1
         date = datetime.now().strftime("%A %d. %B %Y")
+        print("starting file")
         file = request.files.get('file')
-        filename = file.filename
-        file.save("uploads/"+filename)
+        print("file test")
+        if file != None:
+            filename = file.filename
+            file.save("uploads/"+filename)
+            print("file saved", filename)
         posts.append({"id": id, "date":date,"content":content,"name": name, "title":title, "file":file})
     return render_template("new_posts.html")
+@app.route("/file")
+def get_file(filename):
+    print("file post,", filename)
+    return send_from_directory("uploads/" + filename)
 @app.route("/form_submission")
 def form_sub():
     return render_template("form.html")
