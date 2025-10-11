@@ -3,7 +3,7 @@ from datetime import date, time, datetime
 import os
 
 app = Flask(__name__)
-posts = [{}]
+posts = []
 @app.route("/test")
 def hello():
     return render_template("test.html")
@@ -27,9 +27,10 @@ def new_post():
         print("file test")
         if file != None:
             filename = file.filename
-            file.save("uploads/"+filename)
+            file.save("static/uploads/"+filename)
             print("file saved", filename)
-        posts.append({"id": id, "date":date,"content":content,"name": name, "title":title, "file":file})
+        posts.append({"id": id, "date":date,"content":content,"name": name, "title":title, "file":file, "filename":filename})
+        print(posts)
     return render_template("new_posts.html")
 @app.route("/file")
 def get_file(filename):
